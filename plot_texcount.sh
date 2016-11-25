@@ -7,10 +7,10 @@
 
 PLOT_DATA_FILE=plot_data_crop.txt
 OUTFILE=plot.png
-
 rm -f ${PLOT_DATA_FILE}
-echo "texcount ${@:2}"
-texcount ${@:2}
+
+if [[ -n $(git status --porcelain) ]]; then echo "Repo is dirty, clean up first"; exit 1; fi
+
 while read -r rev; do
   git checkout ${rev}
   TOTAL_WORD_COUNT=$(texcount ${@:2} | grep "Words in text: [0-9]*" | tail -n 1 | grep -o "[0-9]*")
