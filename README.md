@@ -1,6 +1,9 @@
 # Plot texcount
 Plots the number of words for every commit for a latex document tracked with git. 
 
+## Dependencies
+Install both `texcount` and `gnuplot` before running.
+
 ## Example run
 Run it in the root of your git repository with
 
